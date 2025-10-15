@@ -143,7 +143,7 @@ abstract class GeoJson implements JsonSerializable, JsonUnserializable
                     throw UnserializationException::invalidProperty($type, 'features', $json['features'], 'array');
                 }
 
-                $args[] = array_map([self::class, 'jsonUnserialize'], $json['features']);
+                $args[] = array_map(self::jsonUnserialize(...), $json['features']);
                 break;
 
             case self::TYPE_GEOMETRY_COLLECTION:
@@ -155,7 +155,7 @@ abstract class GeoJson implements JsonSerializable, JsonUnserializable
                     throw UnserializationException::invalidProperty($type, 'geometries', $json['geometries'], 'array');
                 }
 
-                $args[] = array_map([self::class, 'jsonUnserialize'], $json['geometries']);
+                $args[] = array_map(self::jsonUnserialize(...), $json['geometries']);
                 break;
 
             default:

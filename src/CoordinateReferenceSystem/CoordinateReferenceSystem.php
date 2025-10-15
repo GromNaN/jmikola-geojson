@@ -75,16 +75,11 @@ abstract class CoordinateReferenceSystem implements JsonSerializable, JsonUnseri
 
         $type = (string) $json['type'];
         $properties = $json['properties'];
-
-        switch ($type) {
-            case 'link':
-                return Linked::jsonUnserializeFromProperties($properties);
-
-            case 'name':
-                return Named::jsonUnserializeFromProperties($properties);
-        }
-
-        throw UnserializationException::unsupportedType('CRS', $type);
+        return match ($type) {
+            'link' => Linked::jsonUnserializeFromProperties($properties),
+            'name' => Named::jsonUnserializeFromProperties($properties),
+            default => throw UnserializationException::unsupportedType('CRS', $type),
+        };
     }
 
     /**

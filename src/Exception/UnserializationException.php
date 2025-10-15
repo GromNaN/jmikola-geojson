@@ -41,7 +41,7 @@ class UnserializationException extends RuntimeException implements Exception
             $context,
             $property,
             $expectedType,
-            is_object($value) ? get_class($value) : gettype($value)
+            get_debug_type($value)
         ));
     }
 

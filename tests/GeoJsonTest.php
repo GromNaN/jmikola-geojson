@@ -129,7 +129,7 @@ JSON;
     #[DataProvider('provideInvalidCoordinates')]
     public function testUnserializationWithInvalidCoordinates($value): void
     {
-        $valueType = is_object($value) ? get_class($value) : gettype($value);
+        $valueType = get_debug_type($value);
 
         $this->expectException(UnserializationException::class);
         $this->expectExceptionMessage('Point expected "coordinates" property of type array, ' . $valueType . ' given');
