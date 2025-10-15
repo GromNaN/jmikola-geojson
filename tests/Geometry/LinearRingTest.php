@@ -10,8 +10,8 @@ use GeoJson\Geometry\LinearRing;
 use GeoJson\Geometry\LineString;
 use GeoJson\Geometry\Point;
 use GeoJson\Tests\GeoJsonTestCase;
-
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
+
 use function is_subclass_of;
 
 class LinearRingTest extends GeoJsonTestCase

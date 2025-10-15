@@ -9,9 +9,9 @@ use GeoJson\Geometry\Geometry;
 use GeoJson\Geometry\LinearRing;
 use GeoJson\Geometry\Polygon;
 use GeoJson\Tests\GeoJsonTestCase;
-
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
+
 use function is_subclass_of;
 use function json_decode;
 

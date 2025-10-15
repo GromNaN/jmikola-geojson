@@ -13,7 +13,6 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
-use function func_get_args;
 use function json_decode;
 
 class BoundingBoxTest extends TestCase
@@ -45,19 +44,19 @@ class BoundingBoxTest extends TestCase
     }
 
     #[DataProvider('provideBoundsWithInvalidTypes')]
-    public function testConstructorShouldRequireIntegerOrFloatValues(mixed ...$args): void
+    public function testConstructorShouldRequireIntegerOrFloatValues(array $bounds): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('BoundingBox values must be integers or floats');
-        new BoundingBox($args);
+        new BoundingBox($bounds);
     }
 
     public static function provideBoundsWithInvalidTypes()
     {
         return [
-            'strings' => ['0', '0.0', '1', '1.0'],
-            'objects' => [new stdClass(), new stdClass(), new stdClass(), new stdClass()],
-            'arrays' => [[], [], [], []],
+            'strings' => [['0', '0.0', '1', '1.0']],
+            'objects' => [[new stdClass(), new stdClass(), new stdClass(), new stdClass()]],
+            'arrays' => [[[], [], [], []]],
         ];
     }
 

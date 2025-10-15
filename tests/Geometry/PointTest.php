@@ -13,7 +13,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use stdClass;
 
-use function func_get_args;
 use function is_subclass_of;
 use function json_decode;
 
