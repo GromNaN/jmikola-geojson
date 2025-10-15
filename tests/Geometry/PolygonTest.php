@@ -17,7 +17,7 @@ use function json_decode;
 
 class PolygonTest extends GeoJsonTestCase
 {
-    public function createSubjectWithExtraArguments(...$extraArgs)
+    public function createSubjectWithExtraArguments(...$extraArgs): Polygon
     {
         return new Polygon(
             [

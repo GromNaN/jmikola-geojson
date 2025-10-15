@@ -118,15 +118,6 @@
     </rule>
 
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint">
-        <properties>
-            <!-- Requires PHP 8.0 -->
-            <property name="enableStaticTypeHint" value="false" />
-            <!-- Requires PHP 8.0 -->
-            <property name="enableMixedTypeHint" value="false" />
-            <!-- Requires PHP 8.0 -->
-            <property name="enableUnionTypeHint" value="false" />
-        </properties>
-
         <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingTraversableTypeHintSpecification" />
         <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.UselessAnnotation" />
     </rule>

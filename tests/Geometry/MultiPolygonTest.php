@@ -17,7 +17,7 @@ use function json_decode;
 
 class MultiPolygonTest extends GeoJsonTestCase
 {
-    public function createSubjectWithExtraArguments(...$extraArgs)
+    public function createSubjectWithExtraArguments(...$extraArgs): MultiPolygon
     {
         return new MultiPolygon([], ... $extraArgs);
     }

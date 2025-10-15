@@ -17,7 +17,7 @@ use function json_decode;
 
 class MultiPointTest extends GeoJsonTestCase
 {
-    public function createSubjectWithExtraArguments(...$extraArgs)
+    public function createSubjectWithExtraArguments(...$extraArgs): MultiPoint
     {
         return new MultiPoint([], ... $extraArgs);
     }

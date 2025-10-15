@@ -16,7 +16,7 @@ use function is_subclass_of;
 
 class LinearRingTest extends GeoJsonTestCase
 {
-    public function createSubjectWithExtraArguments(...$extraArgs)
+    public function createSubjectWithExtraArguments(...$extraArgs): LinearRing
     {
         return new LinearRing(
             [[1, 1], [2, 2], [3, 3], [1, 1]],

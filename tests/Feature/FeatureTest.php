@@ -17,7 +17,7 @@ use function json_decode;
 
 class FeatureTest extends GeoJsonTestCase
 {
-    public function createSubjectWithExtraArguments(...$extraArgs)
+    public function createSubjectWithExtraArguments(...$extraArgs): Feature
     {
         return new Feature(null, null, null, ... $extraArgs);
     }

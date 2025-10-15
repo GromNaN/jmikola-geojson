@@ -18,7 +18,7 @@ use function json_decode;
 
 class PointTest extends GeoJsonTestCase
 {
-    public function createSubjectWithExtraArguments(...$extraArgs)
+    public function createSubjectWithExtraArguments(...$extraArgs): Point
     {
         return new Point([1, 1], ... $extraArgs);
     }

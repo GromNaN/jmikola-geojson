@@ -7,6 +7,7 @@ namespace GeoJson\Tests;
 use GeoJson\BoundingBox;
 use GeoJson\CoordinateReferenceSystem\CoordinateReferenceSystem;
 use GeoJson\Feature\Feature;
+use GeoJson\GeoJson;
 use GeoJson\Geometry\Geometry;
 use PHPUnit\Framework\TestCase;
 
@@ -14,10 +15,8 @@ abstract class GeoJsonTestCase extends TestCase
 {
     /**
      * @param ...$extraArgs
-     *
-     * @return mixed
      */
-    abstract public function createSubjectWithExtraArguments(...$extraArgs);
+    abstract public function createSubjectWithExtraArguments(...$extraArgs): GeoJson;
 
     public function testConstructorShouldScanExtraArgumentsForCrsAndBoundingBox(): void
     {

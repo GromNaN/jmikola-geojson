@@ -17,7 +17,7 @@ use function json_decode;
 
 class LineStringTest extends GeoJsonTestCase
 {
-    public function createSubjectWithExtraArguments(...$extraArgs)
+    public function createSubjectWithExtraArguments(...$extraArgs): LineString
     {
         return new LineString(
             [[1, 1], [2, 2]],
