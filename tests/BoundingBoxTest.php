@@ -8,6 +8,8 @@ use GeoJson\BoundingBox;
 use GeoJson\Exception\InvalidArgumentException;
 use GeoJson\Exception\UnserializationException;
 use GeoJson\JsonUnserializable;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
@@ -42,14 +44,12 @@ class BoundingBoxTest extends TestCase
         new BoundingBox([0, 0, 1, 1, 2]);
     }
 
-    /**
-     * @dataProvider provideBoundsWithInvalidTypes
-     */
-    public function testConstructorShouldRequireIntegerOrFloatValues(): void
+    #[DataProvider('provideBoundsWithInvalidTypes')]
+    public function testConstructorShouldRequireIntegerOrFloatValues(mixed ...$args): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('BoundingBox values must be integers or floats');
-        new BoundingBox(func_get_args());
+        new BoundingBox($args);
     }
 
     public static function provideBoundsWithInvalidTypes()
@@ -78,10 +78,8 @@ class BoundingBoxTest extends TestCase
         $this->assertSame($bounds, $boundingBox->jsonSerialize());
     }
 
-    /**
-     * @dataProvider provideJsonDecodeAssocOptions
-     * @group functional
-     */
+    #[DataProvider('provideJsonDecodeAssocOptions')]
+    #[Group('functional')]
     public function testUnserialization($assoc): void
     {
         $json = '[-180.0, -90.0, 180.0, 90.0]';
@@ -101,9 +99,7 @@ class BoundingBoxTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider provideInvalidUnserializationValues
-     */
+    #[DataProvider('provideInvalidUnserializationValues')]
     public function testUnserializationShouldRequireArray($value): void
     {
         $this->expectException(UnserializationException::class);

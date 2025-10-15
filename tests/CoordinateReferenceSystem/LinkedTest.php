@@ -7,6 +7,8 @@ namespace GeoJson\Tests\CoordinateReferenceSystem;
 use GeoJson\CoordinateReferenceSystem\CoordinateReferenceSystem;
 use GeoJson\CoordinateReferenceSystem\Linked;
 use GeoJson\Exception\UnserializationException;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
 use function is_subclass_of;
@@ -50,10 +52,8 @@ class LinkedTest extends TestCase
         $this->assertSame($expected, $crs->jsonSerialize());
     }
 
-    /**
-     * @dataProvider provideJsonDecodeAssocOptions
-     * @group functional
-     */
+    #[DataProvider('provideJsonDecodeAssocOptions')]
+    #[Group('functional')]
     public function testUnserialization($assoc): void
     {
         $json = <<<'JSON'
@@ -79,10 +79,8 @@ JSON;
         $this->assertSame($expectedProperties, $crs->getProperties());
     }
 
-    /**
-     * @dataProvider provideJsonDecodeAssocOptions
-     * @group functional
-     */
+    #[DataProvider('provideJsonDecodeAssocOptions')]
+    #[Group('functional')]
     public function testUnserializationWithoutHrefType($assoc): void
     {
         $json = <<<'JSON'

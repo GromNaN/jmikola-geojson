@@ -11,6 +11,8 @@ use GeoJson\GeoJson;
 use GeoJson\Geometry\Point;
 use GeoJson\JsonUnserializable;
 use JsonSerializable;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
 use function get_class;
@@ -30,10 +32,8 @@ class GeoJsonTest extends TestCase
         $this->assertInstanceOf(JsonUnserializable::class, $this->createMock(GeoJson::class));
     }
 
-    /**
-     * @dataProvider provideJsonDecodeAssocOptions
-     * @group functional
-     */
+    #[DataProvider('provideJsonDecodeAssocOptions')]
+    #[Group('functional')]
     public function testUnserializationWithBoundingBox($assoc): void
     {
         $json = <<<'JSON'
@@ -57,10 +57,8 @@ JSON;
         $this->assertSame([-180.0, -90.0, 180.0, 90.0], $boundingBox->getBounds());
     }
 
-    /**
-     * @dataProvider provideJsonDecodeAssocOptions
-     * @group functional
-     */
+    #[DataProvider('provideJsonDecodeAssocOptions')]
+    #[Group('functional')]
     public function testUnserializationWithCrs($assoc): void
     {
         $json = <<<'JSON'
@@ -116,9 +114,7 @@ JSON;
         GeoJson::jsonUnserialize([]);
     }
 
-    /**
-     * @dataProvider provideGeoJsonTypesWithCoordinates
-     */
+    #[DataProvider('provideGeoJsonTypesWithCoordinates')]
     public function testUnserializationWithMissingCoordinates(string $type): void
     {
         $this->expectException(UnserializationException::class);
@@ -129,11 +125,8 @@ JSON;
         ]);
     }
 
-    /**
-     * @dataProvider provideInvalidCoordinates
-     *
-     * @param mixed $value
-     */
+    /** @param mixed $value */
+    #[DataProvider('provideInvalidCoordinates')]
     public function testUnserializationWithInvalidCoordinates($value): void
     {
         $valueType = is_object($value) ? get_class($value) : gettype($value);

@@ -8,12 +8,14 @@ use GeoJson\GeoJson;
 use GeoJson\Geometry\Geometry;
 use GeoJson\Geometry\MultiPolygon;
 use GeoJson\Geometry\Polygon;
-use GeoJson\Tests\BaseGeoJsonTest;
+use GeoJson\Tests\GeoJsonTestCase;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use function is_subclass_of;
 use function json_decode;
 
-class MultiPolygonTest extends BaseGeoJsonTest
+class MultiPolygonTest extends GeoJsonTestCase
 {
     public function createSubjectWithExtraArguments(...$extraArgs)
     {
@@ -59,10 +61,8 @@ class MultiPolygonTest extends BaseGeoJsonTest
         $this->assertSame($expected, $multiPolygon->jsonSerialize());
     }
 
-    /**
-     * @dataProvider provideJsonDecodeAssocOptions
-     * @group functional
-     */
+    #[DataProvider('provideJsonDecodeAssocOptions')]
+    #[Group('functional')]
     public function testUnserialization($assoc): void
     {
         $json = <<<'JSON'

@@ -9,11 +9,12 @@ use GeoJson\GeoJson;
 use GeoJson\Geometry\LinearRing;
 use GeoJson\Geometry\LineString;
 use GeoJson\Geometry\Point;
-use GeoJson\Tests\BaseGeoJsonTest;
+use GeoJson\Tests\GeoJsonTestCase;
 
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use function is_subclass_of;
 
-class LinearRingTest extends BaseGeoJsonTest
+class LinearRingTest extends GeoJsonTestCase
 {
     public function createSubjectWithExtraArguments(...$extraArgs)
     {
@@ -53,9 +54,7 @@ class LinearRingTest extends BaseGeoJsonTest
         ]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testConstructorShouldAcceptEquivalentPointObjectsAndPositionArrays(): void
     {
         new LinearRing([

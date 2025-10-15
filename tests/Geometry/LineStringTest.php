@@ -8,12 +8,14 @@ use GeoJson\Exception\InvalidArgumentException;
 use GeoJson\GeoJson;
 use GeoJson\Geometry\LineString;
 use GeoJson\Geometry\MultiPoint;
-use GeoJson\Tests\BaseGeoJsonTest;
+use GeoJson\Tests\GeoJsonTestCase;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use function is_subclass_of;
 use function json_decode;
 
-class LineStringTest extends BaseGeoJsonTest
+class LineStringTest extends GeoJsonTestCase
 {
     public function createSubjectWithExtraArguments(...$extraArgs)
     {
@@ -51,10 +53,8 @@ class LineStringTest extends BaseGeoJsonTest
         $this->assertSame($expected, $lineString->jsonSerialize());
     }
 
-    /**
-     * @dataProvider provideJsonDecodeAssocOptions
-     * @group functional
-     */
+    #[DataProvider('provideJsonDecodeAssocOptions')]
+    #[Group('functional')]
     public function testUnserialization($assoc): void
     {
         $json = <<<'JSON'

@@ -10,14 +10,16 @@ use GeoJson\GeoJson;
 use GeoJson\Geometry\Geometry;
 use GeoJson\Geometry\GeometryCollection;
 use GeoJson\Geometry\Point;
-use GeoJson\Tests\BaseGeoJsonTest;
+use GeoJson\Tests\GeoJsonTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use stdClass;
 
 use function is_subclass_of;
 use function iterator_to_array;
 use function json_decode;
 
-class GeometryCollectionTest extends BaseGeoJsonTest
+class GeometryCollectionTest extends GeoJsonTestCase
 {
     public function createSubjectWithExtraArguments(...$extraArgs)
     {
@@ -99,10 +101,8 @@ class GeometryCollectionTest extends BaseGeoJsonTest
         $this->assertSame($expected, $collection->jsonSerialize());
     }
 
-    /**
-     * @dataProvider provideJsonDecodeAssocOptions
-     * @group functional
-     */
+    #[DataProvider('provideJsonDecodeAssocOptions')]
+    #[Group('functional')]
     public function testUnserialization($assoc): void
     {
         $json = <<<'JSON'

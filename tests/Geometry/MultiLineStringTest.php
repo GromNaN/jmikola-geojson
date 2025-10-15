@@ -8,12 +8,14 @@ use GeoJson\GeoJson;
 use GeoJson\Geometry\Geometry;
 use GeoJson\Geometry\LineString;
 use GeoJson\Geometry\MultiLineString;
-use GeoJson\Tests\BaseGeoJsonTest;
+use GeoJson\Tests\GeoJsonTestCase;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use function is_subclass_of;
 use function json_decode;
 
-class MultiLineStringTest extends BaseGeoJsonTest
+class MultiLineStringTest extends GeoJsonTestCase
 {
     public function createSubjectWithExtraArguments(...$extraArgs)
     {
@@ -59,10 +61,8 @@ class MultiLineStringTest extends BaseGeoJsonTest
         $this->assertSame($expected, $multiLineString->jsonSerialize());
     }
 
-    /**
-     * @dataProvider provideJsonDecodeAssocOptions
-     * @group functional
-     */
+    #[DataProvider('provideJsonDecodeAssocOptions')]
+    #[Group('functional')]
     public function testUnserialization($assoc): void
     {
         $json = <<<'JSON'

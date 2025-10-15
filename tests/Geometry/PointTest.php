@@ -8,14 +8,16 @@ use GeoJson\Exception\InvalidArgumentException;
 use GeoJson\GeoJson;
 use GeoJson\Geometry\Geometry;
 use GeoJson\Geometry\Point;
-use GeoJson\Tests\BaseGeoJsonTest;
+use GeoJson\Tests\GeoJsonTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use stdClass;
 
 use function func_get_args;
 use function is_subclass_of;
 use function json_decode;
 
-class PointTest extends BaseGeoJsonTest
+class PointTest extends GeoJsonTestCase
 {
     public function createSubjectWithExtraArguments(...$extraArgs)
     {
@@ -35,23 +37,21 @@ class PointTest extends BaseGeoJsonTest
         new Point([1]);
     }
 
-    /**
-     * @dataProvider providePositionsWithInvalidTypes
-     */
-    public function testConstructorShouldRequireIntegerOrFloatElementsInPosition(): void
+    #[DataProvider('providePositionsWithInvalidTypes')]
+    public function testConstructorShouldRequireIntegerOrFloatElementsInPosition(array $position): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Position elements must be integers or floats');
 
-        new Point(func_get_args());
+        new Point($position);
     }
 
     public static function providePositionsWithInvalidTypes()
     {
         return [
-            'strings' => ['1.0', '2'],
-            'objects' => [new stdClass(), new stdClass()],
-            'arrays' => [[], []],
+            'strings' => [['1.0', '2']],
+            'objects' => [[new stdClass(), new stdClass()]],
+            'arrays' => [[[], []]],
         ];
     }
 
@@ -77,10 +77,8 @@ class PointTest extends BaseGeoJsonTest
         $this->assertSame($expected, $point->jsonSerialize());
     }
 
-    /**
-     * @dataProvider provideJsonDecodeAssocOptions
-     * @group functional
-     */
+    #[DataProvider('provideJsonDecodeAssocOptions')]
+    #[Group('functional')]
     public function testUnserialization($assoc): void
     {
         $json = <<<'JSON'

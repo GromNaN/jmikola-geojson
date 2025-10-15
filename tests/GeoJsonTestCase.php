@@ -10,7 +10,7 @@ use GeoJson\Feature\Feature;
 use GeoJson\Geometry\Geometry;
 use PHPUnit\Framework\TestCase;
 
-abstract class BaseGeoJsonTest extends TestCase
+abstract class GeoJsonTestCase extends TestCase
 {
     /**
      * @param ...$extraArgs
