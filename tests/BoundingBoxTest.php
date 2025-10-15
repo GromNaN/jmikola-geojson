@@ -52,7 +52,7 @@ class BoundingBoxTest extends TestCase
         new BoundingBox(func_get_args());
     }
 
-    public function provideBoundsWithInvalidTypes()
+    public static function provideBoundsWithInvalidTypes()
     {
         return [
             'strings' => ['0', '0.0', '1', '1.0'],
@@ -93,7 +93,7 @@ class BoundingBoxTest extends TestCase
         $this->assertSame([-180.0, -90.0, 180.0, 90.0], $boundingBox->getBounds());
     }
 
-    public function provideJsonDecodeAssocOptions()
+    public static function provideJsonDecodeAssocOptions()
     {
         return [
             'assoc=true' => [true],
@@ -112,7 +112,7 @@ class BoundingBoxTest extends TestCase
         BoundingBox::jsonUnserialize($value);
     }
 
-    public function provideInvalidUnserializationValues()
+    public static function provideInvalidUnserializationValues()
     {
         return [
             [null],

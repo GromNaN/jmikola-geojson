@@ -46,7 +46,7 @@ class PointTest extends BaseGeoJsonTest
         new Point(func_get_args());
     }
 
-    public function providePositionsWithInvalidTypes()
+    public static function providePositionsWithInvalidTypes()
     {
         return [
             'strings' => ['1.0', '2'],
@@ -98,7 +98,7 @@ JSON;
         $this->assertSame([1, 1], $point->getCoordinates());
     }
 
-    public function provideJsonDecodeAssocOptions()
+    public static function provideJsonDecodeAssocOptions()
     {
         return [
             'assoc=true' => [true],

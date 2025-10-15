@@ -88,7 +88,7 @@ JSON;
         $this->assertSame($expectedCoordinates, $multiLineString->getCoordinates());
     }
 
-    public function provideJsonDecodeAssocOptions()
+    public static function provideJsonDecodeAssocOptions()
     {
         return [
             'assoc=true' => [true],

@@ -169,7 +169,7 @@ JSON;
         ]);
     }
 
-    public function provideJsonDecodeAssocOptions()
+    public static function provideJsonDecodeAssocOptions()
     {
         return [
             'assoc=true' => [true],
@@ -177,7 +177,7 @@ JSON;
         ];
     }
 
-    public function provideGeoJsonTypesWithCoordinates()
+    public static function provideGeoJsonTypesWithCoordinates()
     {
         return [
             GeoJson::TYPE_LINE_STRING => [GeoJson::TYPE_LINE_STRING],
@@ -189,7 +189,7 @@ JSON;
         ];
     }
 
-    public function provideInvalidCoordinates()
+    public static function provideInvalidCoordinates()
     {
         return [
             'string' => ['1,1'],

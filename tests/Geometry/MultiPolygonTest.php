@@ -88,7 +88,7 @@ JSON;
         $this->assertSame($expectedCoordinates, $multiPolygon->getCoordinates());
     }
 
-    public function provideJsonDecodeAssocOptions()
+    public static function provideJsonDecodeAssocOptions()
     {
         return [
             'assoc=true' => [true],

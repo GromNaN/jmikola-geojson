@@ -94,7 +94,7 @@ JSON;
         $this->assertSame($expectedCoordinates, $polygon->getCoordinates());
     }
 
-    public function provideJsonDecodeAssocOptions()
+    public static function provideJsonDecodeAssocOptions()
     {
         return [
             'assoc=true' => [true],

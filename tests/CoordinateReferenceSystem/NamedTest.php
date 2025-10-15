@@ -60,7 +60,7 @@ JSON;
         $this->assertSame($expectedProperties, $crs->getProperties());
     }
 
-    public function provideJsonDecodeAssocOptions()
+    public static function provideJsonDecodeAssocOptions()
     {
         return [
             'assoc=true' => [true],

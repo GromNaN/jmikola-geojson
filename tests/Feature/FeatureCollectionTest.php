@@ -145,7 +145,7 @@ JSON;
         $this->assertSame([1, 1], $geometry->getCoordinates());
     }
 
-    public function provideJsonDecodeAssocOptions()
+    public static function provideJsonDecodeAssocOptions()
     {
         return [
             'assoc=true' => [true],
