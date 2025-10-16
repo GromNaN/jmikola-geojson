@@ -53,7 +53,6 @@ class LinkedTest extends TestCase
     }
 
     #[DataProvider('provideJsonDecodeAssocOptions')]
-    #[Group('functional')]
     public function testUnserialization($assoc): void
     {
         $json = <<<'JSON'
@@ -80,7 +79,6 @@ JSON;
     }
 
     #[DataProvider('provideJsonDecodeAssocOptions')]
-    #[Group('functional')]
     public function testUnserializationWithoutHrefType($assoc): void
     {
         $json = <<<'JSON'

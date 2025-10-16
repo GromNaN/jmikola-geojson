@@ -34,7 +34,6 @@ class GeoJsonTest extends TestCase
     }
 
     #[DataProvider('provideJsonDecodeAssocOptions')]
-    #[Group('functional')]
     public function testUnserializationWithBoundingBox($assoc): void
     {
         $json = <<<'JSON'
@@ -59,7 +58,6 @@ JSON;
     }
 
     #[DataProvider('provideJsonDecodeAssocOptions')]
-    #[Group('functional')]
     public function testUnserializationWithCrs($assoc): void
     {
         $json = <<<'JSON'

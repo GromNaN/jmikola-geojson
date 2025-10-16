@@ -78,7 +78,6 @@ class BoundingBoxTest extends TestCase
     }
 
     #[DataProvider('provideJsonDecodeAssocOptions')]
-    #[Group('functional')]
     public function testUnserialization($assoc): void
     {
         $json = '[-180.0, -90.0, 180.0, 90.0]';

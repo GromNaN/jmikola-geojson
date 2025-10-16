@@ -38,7 +38,6 @@ class NamedTest extends TestCase
     }
 
     #[DataProvider('provideJsonDecodeAssocOptions')]
-    #[Group('functional')]
     public function testUnserialization($assoc): void
     {
         $json = <<<'JSON'

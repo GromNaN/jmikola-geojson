@@ -79,7 +79,6 @@ class FeatureTest extends GeoJsonTestCase
     }
 
     #[DataProvider('provideJsonDecodeAssocOptions')]
-    #[Group('functional')]
     public function testUnserialization($assoc): void
     {
         $json = <<<'JSON'
