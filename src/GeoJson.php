@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace GeoJson;
 
-use ArrayObject;
 use GeoJson\CoordinateReferenceSystem\CoordinateReferenceSystem;
 use GeoJson\Exception\UnserializationException;
 use JsonSerializable;
 
+use function array_key_exists;
 use function array_map;
 use function is_array;
 use function is_object;
@@ -87,9 +87,9 @@ abstract class GeoJson implements JsonSerializable, JsonUnserializable
             throw UnserializationException::invalidValue('GeoJson', $json, 'array or object');
         }
 
-        $json = new ArrayObject($json);
+        $json = (array) $json;
 
-        if (! $json->offsetExists('type')) {
+        if (! array_key_exists('type', $json)) {
             throw UnserializationException::missingProperty('GeoJson', 'type', 'string');
         }
 
@@ -103,7 +103,7 @@ abstract class GeoJson implements JsonSerializable, JsonUnserializable
             case self::TYPE_MULTI_POLYGON:
             case self::TYPE_POINT:
             case self::TYPE_POLYGON:
-                if (! $json->offsetExists('coordinates')) {
+                if (! array_key_exists('coordinates', $json)) {
                     throw UnserializationException::missingProperty($type, 'coordinates', 'array');
                 }
 
@@ -135,7 +135,7 @@ abstract class GeoJson implements JsonSerializable, JsonUnserializable
                 break;
 
             case self::TYPE_FEATURE_COLLECTION:
-                if (! $json->offsetExists('features')) {
+                if (! array_key_exists('features', $json)) {
                     throw UnserializationException::missingProperty($type, 'features', 'array');
                 }
 
@@ -147,7 +147,7 @@ abstract class GeoJson implements JsonSerializable, JsonUnserializable
                 break;
 
             case self::TYPE_GEOMETRY_COLLECTION:
-                if (! $json->offsetExists('geometries')) {
+                if (! array_key_exists('geometries', $json)) {
                     throw UnserializationException::missingProperty($type, 'geometries', 'array');
                 }
 

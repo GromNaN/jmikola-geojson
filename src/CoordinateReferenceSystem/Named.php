@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace GeoJson\CoordinateReferenceSystem;
 
-use ArrayObject;
 use GeoJson\Exception\UnserializationException;
 
+use function array_key_exists;
 use function is_array;
 use function is_object;
 
@@ -41,9 +41,9 @@ class Named extends CoordinateReferenceSystem
             throw UnserializationException::invalidProperty('Named CRS', 'properties', $properties, 'array or object');
         }
 
-        $properties = new ArrayObject($properties);
+        $properties = (array) $properties;
 
-        if (! $properties->offsetExists('name')) {
+        if (! array_key_exists('name', $properties)) {
             throw UnserializationException::missingProperty('Named CRS', 'properties.name', 'string');
         }
 

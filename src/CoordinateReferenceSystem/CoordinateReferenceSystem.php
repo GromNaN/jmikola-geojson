@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace GeoJson\CoordinateReferenceSystem;
 
-use ArrayObject;
 use BadMethodCallException;
 use GeoJson\Exception\UnserializationException;
 use GeoJson\JsonUnserializable;
 use JsonSerializable;
 
+use function array_key_exists;
 use function is_array;
 use function is_object;
 use function sprintf;
@@ -63,13 +63,13 @@ abstract class CoordinateReferenceSystem implements JsonSerializable, JsonUnseri
             throw UnserializationException::invalidValue('CRS', $json, 'array or object');
         }
 
-        $json = new ArrayObject($json);
+        $json = (array) $json;
 
-        if (! $json->offsetExists('type')) {
+        if (! array_key_exists('type', $json)) {
             throw UnserializationException::missingProperty('CRS', 'type', 'string');
         }
 
-        if (! $json->offsetExists('properties')) {
+        if (! array_key_exists('properties', $json)) {
             throw UnserializationException::missingProperty('CRS', 'properties', 'array or object');
         }
 
