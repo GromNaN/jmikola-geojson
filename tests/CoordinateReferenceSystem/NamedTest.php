@@ -8,7 +8,6 @@ use GeoJson\CoordinateReferenceSystem\CoordinateReferenceSystem;
 use GeoJson\CoordinateReferenceSystem\Named;
 use GeoJson\Exception\UnserializationException;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
 use function is_subclass_of;

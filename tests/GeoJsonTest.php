@@ -12,13 +12,9 @@ use GeoJson\Geometry\Point;
 use GeoJson\JsonUnserializable;
 use JsonSerializable;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
-use function get_class;
 use function get_debug_type;
-use function gettype;
-use function is_object;
 use function json_decode;
 
 class GeoJsonTest extends TestCase

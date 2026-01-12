@@ -10,7 +10,6 @@ use GeoJson\Geometry\Geometry;
 use GeoJson\Geometry\Point;
 use GeoJson\Tests\GeoJsonTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\Group;
 use stdClass;
 
 use function is_subclass_of;

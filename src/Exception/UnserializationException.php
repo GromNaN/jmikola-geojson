@@ -6,10 +6,7 @@ namespace GeoJson\Exception;
 
 use RuntimeException;
 
-use function get_class;
 use function get_debug_type;
-use function gettype;
-use function is_object;
 use function sprintf;
 
 class UnserializationException extends RuntimeException implements Exception

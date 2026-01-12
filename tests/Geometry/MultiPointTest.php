@@ -10,7 +10,6 @@ use GeoJson\Geometry\MultiPoint;
 use GeoJson\Geometry\Point;
 use GeoJson\Tests\GeoJsonTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\Group;
 
 use function is_subclass_of;
 use function json_decode;

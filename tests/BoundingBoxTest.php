@@ -9,7 +9,6 @@ use GeoJson\Exception\InvalidArgumentException;
 use GeoJson\Exception\UnserializationException;
 use GeoJson\JsonUnserializable;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
